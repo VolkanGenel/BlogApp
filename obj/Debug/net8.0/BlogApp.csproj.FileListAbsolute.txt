@@ -120,3 +120,8 @@
 /Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/BlogApp.pdb
 /Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/BlogApp.genruntimeconfig.cache
 /Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/ref/BlogApp.dll
+/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/BlogApp.sourcelink.json
+/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/bin/Debug/net8.0/Npgsql.dll
+/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/BlogApp.RazorAssemblyInfo.cache
+/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/BlogApp.RazorAssemblyInfo.cs

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -15,9 +16,9 @@ namespace BlogApp.Migrations
                 name: "Tags",
                 columns: table => new
                 {
-                    TagId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Text = table.Column<string>(type: "TEXT", nullable: true)
+                    TagId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Text = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,9 +29,9 @@ namespace BlogApp.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserName = table.Column<string>(type: "TEXT", nullable: true)
+                    UserId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserName = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,13 +42,14 @@ namespace BlogApp.Migrations
                 name: "Posts",
                 columns: table => new
                 {
-                    PostId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: true),
-                    Content = table.Column<string>(type: "TEXT", nullable: true),
-                    PublishedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    PostId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Content = table.Column<string>(type: "text", nullable: true),
+                    Image = table.Column<string>(type: "text", nullable: true),
+                    PublishedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,12 +66,12 @@ namespace BlogApp.Migrations
                 name: "Comments",
                 columns: table => new
                 {
-                    CommentId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    CommentText = table.Column<string>(type: "TEXT", nullable: true),
-                    PublishedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    PostId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    CommentId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CommentText = table.Column<string>(type: "text", nullable: true),
+                    PublishedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    PostId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,8 +94,8 @@ namespace BlogApp.Migrations
                 name: "PostTag",
                 columns: table => new
                 {
-                    PostsPostId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TagsTagId = table.Column<int>(type: "INTEGER", nullable: false)
+                    PostsPostId = table.Column<int>(type: "integer", nullable: false),
+                    TagsTagId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
