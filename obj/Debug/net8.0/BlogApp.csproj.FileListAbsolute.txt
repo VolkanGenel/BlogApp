@@ -125,3 +125,5 @@
 /Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/BlogApp.RazorAssemblyInfo.cache
 /Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/obj/Debug/net8.0/BlogApp.RazorAssemblyInfo.cs
+/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/bin/Debug/net8.0/libman.json
+/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/bin/Debug/net8.0/BlogApp.staticwebassets.runtime.json

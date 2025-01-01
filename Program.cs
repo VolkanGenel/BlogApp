@@ -14,8 +14,15 @@ builder.Services.AddDbContext<BlogContext>(options=> {
 });
 
 builder.Services.AddScoped<IPostRepository, EfPostRepository>(); //Ben sanal olan IPostRepositoryi çağırdığımda bana gerçeği EfPostRepositoryi gönder. 
+builder.Services.AddScoped<ITagRepository, EfTagRepository>(); //Ben sanal olan ITagRepositoryi çağırdığımda bana gerçeği EfTagRepositoryi gönder. 
 
 var app = builder.Build();
+
+app.UseStaticFiles(); //wwwroot altındaki dosyaları program için erişime açmış olduk.
+// dotnet tool install microsoft.web.librarymanager.cli -g -v 2.1.175 (versiyonu ile indirdik.)
+// dotnet tool list -g orada microsoft.web.librarymanager.cli (libmani global alan indirdik, buradan görebiliriz.)
+// libman init -p cdnjs projeye libman.json dosyasını ekledik ki bizim için yönetsin
+// libman install bootstrap@5.3.3 -d wwwroot/lib/bootstrap bootstrap dosyalarını wwwroota indirmiş olduk.
 
 SeedData.InstallTestData(app);
 
