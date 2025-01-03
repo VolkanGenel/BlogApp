@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogApp.Entity;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.Data.Concrete.EfCore
@@ -22,11 +23,11 @@ namespace BlogApp.Data.Concrete.EfCore
                 if (!context.Tags.Any())
                 {
                     context.Tags.AddRange(
-                        new Entity.Tag { Text = "web programming" },
-                        new Entity.Tag { Text = "backend" },
-                        new Entity.Tag { Text = "frontend" },
-                        new Entity.Tag { Text = "fullstack" },
-                        new Entity.Tag { Text = "php" }
+                        new Entity.Tag { Text = "web programming", Url = "web-programming", Color = TagColors.warning },
+                        new Entity.Tag { Text = "backend", Url = "backend", Color = TagColors.info },
+                        new Entity.Tag { Text = "frontend", Url = "frontend", Color = TagColors.success },
+                        new Entity.Tag { Text = "fullstack", Url = "fullstack", Color = TagColors.secondary },
+                        new Entity.Tag { Text = "php", Url = "php", Color = TagColors.primary }
                     );
                     context.SaveChanges();
                 }
@@ -46,6 +47,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "Asp.net core",
                             Content = "Asp.new core lectures",
+                            Url = "aspnet-core",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-10),
                             Tags = context.Tags.OrderBy(t => t.TagId).Take(3).ToList(),
@@ -56,6 +58,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "Php",
                             Content = "Php lectures",
+                            Url = "php",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-20),
                             Tags = context.Tags.OrderBy(t => t.TagId).Take(2).ToList(),
@@ -66,8 +69,42 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "Django",
                             Content = "Django lectures",
+                            Url = "django",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-5),
+                            Tags = context.Tags.OrderBy(t => t.TagId).Take(4).ToList(),
+                            Image = "3.png",
+                            UserId = 3
+                        },
+                        new Post
+                        {
+                            Title = "React",
+                            Content = "React lectures",
+                            Url = "react",
+                            IsActive = true,
+                            PublishedAt = DateTime.UtcNow.AddDays(-4),
+                            Tags = context.Tags.OrderBy(t => t.TagId).Take(4).ToList(),
+                            Image = "3.png",
+                            UserId = 3
+                        },
+                        new Post
+                        {
+                            Title = "Angular",
+                            Content = "Angular lectures",
+                            Url = "angular",
+                            IsActive = true,
+                            PublishedAt = DateTime.UtcNow.AddDays(-12),
+                            Tags = context.Tags.OrderBy(t => t.TagId).Take(4).ToList(),
+                            Image = "3.png",
+                            UserId = 3
+                        },
+                        new Post
+                        {
+                            Title = "Java",
+                            Content = "Java lectures",
+                            Url = "java",
+                            IsActive = true,
+                            PublishedAt = DateTime.UtcNow.AddDays(-30),
                             Tags = context.Tags.OrderBy(t => t.TagId).Take(4).ToList(),
                             Image = "3.png",
                             UserId = 3

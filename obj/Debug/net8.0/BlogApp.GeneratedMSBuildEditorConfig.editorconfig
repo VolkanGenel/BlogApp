@@ -18,8 +18,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/Views/Post/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9zdC9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/Views/Post/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9zdC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/Views/Shared/Components/NewPosts/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTmV3UG9zdHMvRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/Views/Shared/Components/TagsMenu/Default.cshtml]

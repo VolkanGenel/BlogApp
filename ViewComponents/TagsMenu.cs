@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BlogApp.Data.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.ViewComponents
 {
@@ -15,9 +12,9 @@ namespace BlogApp.ViewComponents
         {
             this._tagrepository = tagRepository;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_tagrepository.Tags.ToList());
+            return View(await _tagrepository.Tags.ToListAsync());
         }
     }
 }

@@ -1,5 +1,6 @@
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,5 +28,25 @@ app.UseStaticFiles(); //wwwroot altındaki dosyaları program için erişime aç
 SeedData.InstallTestData(app);
 
 app.MapDefaultControllerRoute();
+
+// localhost://post/react
+// localhost://post/php
+
+app.MapControllerRoute(
+    name: "post_details",
+    pattern: "post/{url}",
+    defaults: new {controller = "Post", action="Details" }
+);
+
+app.MapControllerRoute(
+    name: "posts_by_tag",
+    pattern: "post/tag/{tag}",
+    defaults: new {controller = "Post", action="Index" }
+);
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Post}/{action=Index}/{id?}"
+);
 
 app.Run();
