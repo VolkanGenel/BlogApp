@@ -16,6 +16,7 @@ builder.Services.AddDbContext<BlogContext>(options=> {
 
 builder.Services.AddScoped<IPostRepository, EfPostRepository>(); //Ben sanal olan IPostRepositoryi çağırdığımda bana gerçeği EfPostRepositoryi gönder. 
 builder.Services.AddScoped<ITagRepository, EfTagRepository>(); //Ben sanal olan ITagRepositoryi çağırdığımda bana gerçeği EfTagRepositoryi gönder. 
+builder.Services.AddScoped<ICommentRepository, EfCommentRepository>(); //Ben sanal olan ICommentRepositoryi çağırdığımda bana gerçeği EfCommentRepositoryi gönder. 
 
 var app = builder.Build();
 
@@ -34,7 +35,7 @@ app.MapDefaultControllerRoute();
 
 app.MapControllerRoute(
     name: "post_details",
-    pattern: "post/{url}",
+    pattern: "post/in-detail/{url}",
     defaults: new {controller = "Post", action="Details" }
 );
 
@@ -46,7 +47,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Post}/{action=Index}/{id?}"
+    pattern: "{controller=Home}/{action=Index}/{id?}"
 );
 
 app.Run();

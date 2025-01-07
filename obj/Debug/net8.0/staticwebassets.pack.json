@@ -17,6 +17,22 @@
       "PackagePath": "staticwebassets/img/3.png"
     },
     {
+      "Id": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/img/avatar.jpeg",
+      "PackagePath": "staticwebassets/img/avatar.jpeg"
+    },
+    {
+      "Id": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/img/p1.jpeg",
+      "PackagePath": "staticwebassets/img/p1.jpeg"
+    },
+    {
+      "Id": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/img/p2.jpeg",
+      "PackagePath": "staticwebassets/img/p2.jpeg"
+    },
+    {
+      "Id": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/img/p3..jpeg",
+      "PackagePath": "staticwebassets/img/p3..jpeg"
+    },
+    {
       "Id": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/lib/bootstrap-icons/bootstrap-icons.svg",
       "PackagePath": "staticwebassets/lib/bootstrap-icons/bootstrap-icons.svg"
     },
