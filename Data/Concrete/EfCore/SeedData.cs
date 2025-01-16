@@ -34,9 +34,9 @@ namespace BlogApp.Data.Concrete.EfCore
                 if (!context.Users.Any())
                 {
                     context.Users.AddRange(
-                        new Entity.User { UserName = "sadikturan", Image="p1.jpeg" },
-                        new Entity.User { UserName = "muhammetkaya", Image="p2.jpeg" },
-                        new Entity.User { UserName = "volkangenel", Image="p3.jpeg" }
+                        new Entity.User { UserName = "sadikturan", Name="Sadık Turan", Email="info@sadikturan.com", Password= "123456", Image="p1.jpeg" },
+                        new Entity.User { UserName = "muhammetkaya", Name="Muhammet Kaya", Email="info@muhammetkaya.com", Password= "123456", Image="p2.jpeg" },
+                        new Entity.User { UserName = "volkangenel", Name="Volkan Genel", Email="info@volkangenel.com", Password= "123456", Image="p3.jpeg" }
                     );
                     context.SaveChanges();
                 }
@@ -46,7 +46,9 @@ namespace BlogApp.Data.Concrete.EfCore
                         new Post
                         {
                             Title = "Asp.net core",
+
                             Content = "Asp.new core lectures",
+                            Description = "Asp.new core lectures",
                             Url = "aspnet-core",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-10),
@@ -62,6 +64,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "Php",
                             Content = "Php lectures",
+                            Description = "Php lectures",
                             Url = "php",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-20),
@@ -73,6 +76,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "Django",
                             Content = "Django lectures",
+                            Description = "Django lectures",
                             Url = "django",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-5),
@@ -84,6 +88,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "React",
                             Content = "React lectures",
+                            Description = "React lectures",
                             Url = "react",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-4),
@@ -95,6 +100,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "Angular",
                             Content = "Angular lectures",
+                            Description = "Angular lectures",
                             Url = "angular",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-12),
@@ -106,6 +112,7 @@ namespace BlogApp.Data.Concrete.EfCore
                         {
                             Title = "Java",
                             Content = "Java lectures",
+                            Description = "Java lectures",
                             Url = "java",
                             IsActive = true,
                             PublishedAt = DateTime.UtcNow.AddDays(-30),

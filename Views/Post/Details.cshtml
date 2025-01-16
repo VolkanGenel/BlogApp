@@ -13,7 +13,7 @@
             </div>
 
             <img src="~/img/@Model.Image" class="img-fluid rounded" alt="">
-            <div>@Model.Content</div>
+            <div>@Html.Raw(@Model.Content)</div>
         </div>
         <div class="bg-white mt-3">
             <div class="card border-0">
@@ -44,14 +44,12 @@
                         }
                     </div>
                     <hr class="my-4">
-                    <div>
+                    @if(User.Identity!.IsAuthenticated)
+                    {
+                                            <div>
                         <h4 class="mb-3">Add Comment</h4>
                         <form action="/post/AddComment" method="post">
-                            <input type="hidden" id="PostId" name="PostId" value="@Model.PostId">
-                            <div class="mb-3">
-                                <label for="UserName">Username</label>
-                                <input type="text" name="UserName" id="UserName" class="form-control">
-                            </div>
+                            <input type="hidden" id="PostId" name="PostId" value="@Model.PostId">             
                             <div class="mb-3">
                                 <label for="CommentText">Comment</label>
                                 <textarea type="text" name="CommentText" id="CommentText" rows="3"
@@ -62,6 +60,12 @@
                             </div>
                         </form>
                     </div>
+                    } else
+                    {
+                        <p>Please Login to Add Comment <a href="/user/login">Login</a></p>
+                    }
+                    
+
                 </div>
             </div>
         </div>
@@ -94,10 +98,10 @@
                         var date = new Date(yorum.publishedAt);
                         $("#comments").append(
                             `<div class="my-4 d-flex">
-                            <img src="/img/${yorum.image}" alt="" class="avatar rounded-circle float-start me-3">
+                            <img src="/img/${yorum.avatar}" alt="" class="avatar rounded-circle float-start me-3">
                             <div>
                                 <div class="mb-2 d-flex">
-                                    <h6 class="me-2">${yorum.userName}</h6>
+                                    <h6 class="me-2">${yorum.username}</h6>
                                     <small>${date.toLocaleDateString()}</small>
                                 </div>
                                 <p>${yorum.commentText}</p>

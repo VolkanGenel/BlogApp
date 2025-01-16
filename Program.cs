@@ -1,5 +1,6 @@
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,11 @@ builder.Services.AddDbContext<BlogContext>(options=> {
 builder.Services.AddScoped<IPostRepository, EfPostRepository>(); //Ben sanal olan IPostRepositoryi çağırdığımda bana gerçeği EfPostRepositoryi gönder. 
 builder.Services.AddScoped<ITagRepository, EfTagRepository>(); //Ben sanal olan ITagRepositoryi çağırdığımda bana gerçeği EfTagRepositoryi gönder. 
 builder.Services.AddScoped<ICommentRepository, EfCommentRepository>(); //Ben sanal olan ICommentRepositoryi çağırdığımda bana gerçeği EfCommentRepositoryi gönder. 
+builder.Services.AddScoped<IUserRepository, EfUserRepository>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+    options.LoginPath = "/user/login";
+});
 
 var app = builder.Build();
 
@@ -25,6 +31,10 @@ app.UseStaticFiles(); //wwwroot altındaki dosyaları program için erişime aç
 // dotnet tool list -g orada microsoft.web.librarymanager.cli (libmani global alan indirdik, buradan görebiliriz.)
 // libman init -p cdnjs projeye libman.json dosyasını ekledik ki bizim için yönetsin
 // libman install bootstrap@5.3.3 -d wwwroot/lib/bootstrap bootstrap dosyalarını wwwroota indirmiş olduk.
+
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
 SeedData.InstallTestData(app);
 

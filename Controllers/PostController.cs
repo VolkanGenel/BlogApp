@@ -1,16 +1,19 @@
+using System.Security.Claims;
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete.EfCore;
 using BlogApp.Entity;
 using BlogApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace BlogApp.Controllers
 {
     public class PostController : Controller
     {
-        private IPostRepository _postRepository;
-        private ICommentRepository _commentRepository;
+        private readonly IPostRepository _postRepository;
+        private readonly ICommentRepository _commentRepository;
 
         public PostController(IPostRepository postRepository, ICommentRepository commentRepository)
         {
@@ -20,7 +23,7 @@ namespace BlogApp.Controllers
         // GET: PostController
         public async Task<IActionResult> Index(string tag)
         {
-            var posts = _postRepository.Posts;
+            var posts = _postRepository.Posts.Where(x => x.IsActive == true);
 
             if (!string.IsNullOrEmpty(tag))
             {
@@ -63,24 +66,119 @@ namespace BlogApp.Controllers
             }
         }
         [HttpPost]
-        public JsonResult AddComment(int PostId, string UserName, string CommentText)
+        public JsonResult AddComment(int PostId, string CommentText)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var username = User.FindFirstValue(ClaimTypes.Name);
+            var avatar = User.FindFirstValue(ClaimTypes.UserData);
+
             Comment comment = new Comment
             {
-                CommentText = CommentText,
                 PostId = PostId,
+                CommentText = CommentText,
                 PublishedAt = DateTime.UtcNow,
-                User = new User {UserName = UserName, Image = "avatar.jpeg"}
+                UserId = int.Parse(userId ?? "")
             };
             _commentRepository.CreateComment(comment);
             // // return Redirect("/post/in-detail/"+ Url);
             // return RedirectToRoute("post_details", new {url = Url} );
             return Json (new {
-                UserName,
+                username,
                 CommentText,
                 comment.PublishedAt,
-                comment.User.Image
+                avatar
             });
+        }
+        [Authorize]
+        public IActionResult Create()
+        {
+            return View();   
+        }
+
+        [HttpPost]
+        public IActionResult Create(CreatePostViewModel model)
+        {
+            
+            if(ModelState.IsValid)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                _postRepository.CreatePost(
+                    new Post {
+                        Title = model.Title,
+                        Content = model.Content,
+                        Url = model.Url,
+                        UserId = int.Parse(userId ?? ""),
+                        PublishedAt = DateTime.UtcNow,
+                        Image = "1.png",
+                        IsActive = false
+                    }
+                );
+                return RedirectToAction("Index");
+            }
+            return View(model); 
+        }
+        [Authorize]
+        public async Task<IActionResult> List()
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "");
+            var role = User.FindFirstValue(ClaimTypes.Role);
+
+            var posts = _postRepository.Posts;
+
+            if(string.IsNullOrEmpty(role))
+            {
+                posts = posts.Where(x => x.UserId == userId);
+            }
+
+            return View(await posts.ToListAsync());
+        }
+        [Authorize]
+        public IActionResult Edit (int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var post = _postRepository.Posts.FirstOrDefault(x => x.PostId == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            return View(new CreatePostViewModel {
+                PostId = post.PostId,
+                Title = post.Title,
+                Description = post.Description,
+                Content = post.Content,
+                Url = post.Url,
+                IsActive = post.IsActive
+            });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Edit (CreatePostViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var entityToUpdate = new Post {
+                    PostId = model.PostId,
+                    Title = model.Title,
+                    Description = model.Description,
+                    Content = model.Content,
+                    Url = model.Url
+                };
+                
+                if(User.FindFirstValue(ClaimTypes.Role)=="admin")
+                {
+                    entityToUpdate.IsActive = model.IsActive;
+                }
+
+
+                _postRepository.EditPost(entityToUpdate);
+                return RedirectToAction("list");
+            }
+            return View(model);
         }
 
     }

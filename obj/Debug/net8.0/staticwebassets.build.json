@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wDVJ4C0+fvSueJ5OUXaNtaaXPrd0AexZpDpnPp2dSdk=",
+  "Hash": "QXnepyD2Hud/QSwoBmObdCBZlIjHE9zCIColqE6IMmo=",
   "Source": "BlogApp",
   "BasePath": "_content/BlogApp",
   "Mode": "Default",
@@ -150,12 +150,12 @@
       "OriginalItemSpec": "wwwroot/img/p2.jpeg"
     },
     {
-      "Identity": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/img/p3..jpeg",
+      "Identity": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/img/p3.jpeg",
       "SourceId": "BlogApp",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/",
       "BasePath": "_content/BlogApp",
-      "RelativePath": "img/p3..jpeg",
+      "RelativePath": "img/p3.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -166,7 +166,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/img/p3..jpeg"
+      "OriginalItemSpec": "wwwroot/img/p3.jpeg"
     },
     {
       "Identity": "/Users/sezaigenel/Desktop/aspdotnet/aspnetcore-dersleri-udemy/BlogApp/BlogApp/wwwroot/lib/bootstrap-icons/bootstrap-icons.svg",

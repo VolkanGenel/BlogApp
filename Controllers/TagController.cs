@@ -6,7 +6,7 @@ namespace BlogApp.Controllers
 {
     public class TagController : Controller
     {
-        private ITagRepository _repository;
+        private readonly ITagRepository _repository;
         public TagController (ITagRepository repository)
         {
             this._repository = repository;
